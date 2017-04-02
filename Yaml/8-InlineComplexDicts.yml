@@ -1,0 +1,4 @@
+---
+hostname: Router1
+vlans: [101, 102]
+loopback: { ip: 172.16.1.5, mask: 255.255.255.255 }

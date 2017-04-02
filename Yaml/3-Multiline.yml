@@ -1,0 +1,10 @@
+---
+- include_newlines: |
+            exactly as you see
+            will appear these three
+            lines of poetry
+
+- ignore_newlines: >
+            this is really a
+            single line of text
+            despite appearances
