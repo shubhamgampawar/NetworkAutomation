@@ -1,0 +1,16 @@
+---
+- name: Display debug based on Host Group
+  hosts: all
+  gather_facts: no
+  tasks:
+  - raw: "show arp vrf Mgmt-intf"
+    register: result_ios
+    changed_when: False
+    when: "'ios' in group_names"
+  - raw: "show ip arp vrf management"
+    register: result_nxos
+    changed_when: False
+    when: "'nxos' in group_names"
+  - debug: 
+      var: |
+        result_ios.stdout_lines|default(result_nxos.stdout_lines)

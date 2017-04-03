@@ -1,0 +1,9 @@
+---
+- name: Execute Show ARP on IOS and Display Variables
+  hosts: ios
+  gather_facts: no
+  tasks:
+  - raw: "show arp vrf Mgmt-intf"
+    register: result
+    changed_when: False
+  - debug: var=vars

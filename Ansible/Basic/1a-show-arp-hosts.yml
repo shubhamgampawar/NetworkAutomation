@@ -1,0 +1,15 @@
+---
+- name: Executing Show ARP on IOS Mgmt VRF
+  hosts: ios
+  gather_facts: no
+  ignore_errors: True
+  tasks:
+  - raw: "show arp vrf mgmt-intf"
+    changed_when: False
+
+- name: Executing Show ARP on NxOS Mgmt VRF
+  hosts: nxos
+  gather_facts: no
+  tasks:
+  - raw: "show ip arp vrf management"
+    changed_when: False

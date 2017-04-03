@@ -1,0 +1,2 @@
+ansible all -i groupHosts -m raw -a "show version"
+ansible-playbook -i ios show-arp-hosts.yml

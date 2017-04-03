@@ -1,0 +1,9 @@
+[ios]
+router1.local
+
+[nxos]
+nxswitch1.local
+
+[all:vars]
+ansible_user=cisco
+ansible_ssh_pass=cisco

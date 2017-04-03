@@ -1,0 +1,20 @@
+---
+- name: Executing Show ARP on IOS Mgmt VRF
+  hosts: router1.local
+  gather_facts: no
+  vars:
+     ansible_user: cisco
+     ansible_ssh_pass: cisco
+  tasks:
+  - raw: "show arp vrf mgmt-intf"
+    changed_when: False
+
+- name: Executing Show ARP on NxOS Mgmt VRF
+  hosts: nxswitch1.local
+  gather_facts: no
+  vars:
+     ansible_user: cisco
+     ansible_ssh_pass: cisco
+  tasks:
+  - raw: "show ip arp vrf management"
+    changed_when: False
