@@ -1,0 +1,19 @@
+---
+## This playbook deploys the whole application stack in this site.  
+
+# Apply common configuration to all hosts
+- hosts: web
+  become: yes
+  roles:
+  - webserver
+
+- hosts: db
+  become: yes
+  roles:
+  - database
+
+#- hosts: test
+#  become: yes
+#  roles:
+#  - webserver
+#  - database
