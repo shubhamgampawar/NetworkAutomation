@@ -1,0 +1,11 @@
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname {{hostname}}
+!
+!
+no aaa new-model
+!
+interface loopback 1 
+ ip address {{loopback.ip}} {{loopback.mask|default("255.255.255.255")}}

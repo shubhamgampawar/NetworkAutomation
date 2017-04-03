@@ -1,0 +1,4 @@
+---
+hostname: Router1
+loopback:
+   ip: 172.16.1.1

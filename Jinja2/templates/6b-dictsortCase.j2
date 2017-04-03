@@ -1,0 +1,5 @@
+! Sort Users: {{users.keys()|sort|join(",")}}
+!
+{% for username,password in users|dictsort('True') %}
+user {{username}} password {{password}}
+{% endfor %}

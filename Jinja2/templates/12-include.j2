@@ -1,0 +1,9 @@
+{% import 'macroDir/macros.j2' as ADDR %}
+{% include 'includeDir/loopback.j2'  %}
+{% include 'includeDir/svi.j2'  %}
+!
+interface fa0/0
+{{ ADDR.confAddr(LAN) }}
+!
+interface serial0/1
+{{ ADDR.confAddr(WAN) }}

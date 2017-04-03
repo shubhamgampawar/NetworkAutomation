@@ -1,0 +1,9 @@
+{% for name,ace in aclGroups.items() %}
+ip access-list extended {{name}}
+{% for line in ace %}
+{% set pos = loop.index * 10 %}
+  {{pos}} {{ line }}
+{% endfor %}
+{% endfor %}
+
+{# loop.index0 starts with 0#}

@@ -1,0 +1,5 @@
+! Sort Users: {{users.keys()|sort|join(",")}}
+!
+{% for username,password in users.items() %}
+user {{username}} password {{password}}
+{% endfor %}

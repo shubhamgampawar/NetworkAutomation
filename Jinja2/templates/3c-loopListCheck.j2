@@ -1,0 +1,14 @@
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname {{hostname}}
+!
+logging buffered 4096
+{% if servers is string %}
+logging host {{servers}}
+{% else %}
+  {% for serverip in servers %}
+logging host {{serverip}}
+  {% endfor %}
+{% endif %}

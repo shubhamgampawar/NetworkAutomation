@@ -1,0 +1,7 @@
+{% import 'macroDir/macros.j2' as ADDR %}
+!
+interface fa0/0
+{{ ADDR.confAddr(LAN) }}
+!
+interface serial0/1
+{{ ADDR.confAddr(WAN) }}

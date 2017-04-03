@@ -1,0 +1,11 @@
+{# This is a Jinja2 template comment #}
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+{# Hostname variable retrieved from Yaml #}
+hostname {{hostname}}
+!
+vlan {{vlan}}
+!
+no aaa new-model

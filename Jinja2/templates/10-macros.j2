@@ -1,0 +1,15 @@
+{% macro confAddr(intf,mask) %}
+  ip address {{intf.ip}} {{mask|default(intf.mask)|default('255.255.0.0')}}
+{% endmacro %}
+!
+interface loopback 0
+{{ confAddr(loopback,'255.255.255.255') }}
+!
+interface fa0/0
+{{ confAddr(LAN) }}
+!
+interface vlan 100
+{{ confAddr(SVI) }}
+!
+interface serial0/1
+{{ confAddr(WAN) }}

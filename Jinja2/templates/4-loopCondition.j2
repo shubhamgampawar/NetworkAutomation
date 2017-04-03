@@ -1,0 +1,11 @@
+! Radius Servers
+{% for group in groups %}
+aaa group server radius {{group.name}}
+{% if group.auth_port is defined %}
+server {{group.ip}} auth-port {{group.auth_port}}
+{% endif %}
+{% if group.acct_port is defined %}
+server {{group.ip}} acct-port {{group.acct_port}}
+{% endif %}
+!
+{% endfor %}

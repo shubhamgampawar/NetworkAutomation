@@ -1,0 +1,6 @@
+---
+groups:
+- name: group1
+  ip: 172.16.1.100
+  auth_port: 5555
+- { name: group2,  ip: 172.16.1.200, auth_port: 6666, acct_port: 7777 }

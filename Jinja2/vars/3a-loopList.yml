@@ -1,0 +1,5 @@
+---
+hostname: Router1
+servers: 
+  - 191.168.1.1
+  - 192.168.1.2

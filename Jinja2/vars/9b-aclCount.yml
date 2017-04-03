@@ -1,0 +1,9 @@
+---
+aclGroups:
+  denyweb:
+    - deny tcp any any eq 80 
+    - deny tcp any eq 80 any 
+    - permit ip any any
+  icmpUdp:
+    - permit icmp any any 
+    - permit udp  any any

@@ -1,0 +1,6 @@
+{% for name,ace in aclGroups.items() %}
+ip access-list extended {{name}}
+{% for line in ace %}
+  {{ line }}
+{% endfor %}
+{% endfor %}

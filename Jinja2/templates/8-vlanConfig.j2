@@ -1,0 +1,10 @@
+{% for name,vlan in vlanNames|dictsort('value') %}
+vlan {{vlan.id}}
+  name {{name}}
+  description {{vlan.description}}
+{% endfor %}
+!
+{% for name,intf in intfs|dictsort %}
+interface {{name}}
+ switchport access {{vlanNames[intf.vlan].id}}
+{% endfor %}

@@ -1,0 +1,11 @@
+---
+vlanNames:
+  mgmt: { id: 100, description: management }
+  engg: { id: 101, description: Engg Users }
+  guest: { id: 102, description: Guest Users }
+  mktg: { id: 103, description: Mktg Users }
+intfs:
+  gi0/0: { vlan: mgmt }
+  gi0/1: { vlan: engg }
+  gi0/2: { vlan: guest}
+  gi0/3: { vlan: mktg }
