@@ -1,0 +1,8 @@
+---
+- hosts: all
+  connection: local
+  tasks:
+  - file: path=configs/{{inventory_hostname}}.txt state=absent
+  - template: src={{ansible_device_os}}/configGen.j2 dest=configs/{{inventory_hostname}}.txt
+  name: Delete Existing Configs and create configuration for devices
+
