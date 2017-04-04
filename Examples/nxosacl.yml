@@ -1,0 +1,22 @@
+---
+- hosts: nxos
+  gather_facts: no
+  connection: local
+
+  vars:
+    nxos_var:
+      host: "{{ inventory_hostname }}"    # if multiple hosts are their in routers then "{{ inventory_hostname }}"
+      username: cisco
+      password: cisco
+      transport: cli
+  tasks:
+    - name: testing
+      nxos_acl:
+         name: ANSIBLE
+         seq: 80
+         action: permit
+         proto: tcp
+         src: 2.2.1.1/24
+         dest: any
+         state: present
+         provider: "{{ nxos_var }}"

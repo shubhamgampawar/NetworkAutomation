@@ -1,0 +1,28 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+  vars:
+    iosv_var:
+        host: "{{ inventory_hostname }}"   
+        username: cisco
+        password: cisco
+        transport: cli
+
+  tasks:
+    - name: getting complete information of device
+      ios_command:
+         provider: "{{ iosv_var }}"
+         commands: sh run
+      register: result1
+    - debug: var=result1.stdout_lines
+    - name: getting complete information of device
+      ios_command:
+         provider: "{{ iosv_var }}"
+         commands:
+             - show ip interface brief
+             - show ip route
+      register: result
+    - debug: var=result.stdout_lines
+

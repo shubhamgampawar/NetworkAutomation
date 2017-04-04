@@ -1,0 +1,24 @@
+---
+
+    - name: load new acl into device
+      ios_config:
+        lines:
+          -  10 permit ip host 1.1.1.1 any log
+          -  20 permit ip host 6.6.6.6 any log
+          -  30 permit ip host 7.7.7.7 any log
+          -  40 permit ip host 8.8.8.8 any log
+          -  50 permit ip host 9.9.9.9 any log
+        parents: ip access-list extended test
+        before: no ip access-list extended test
+        match: exact                           # if match filed is not included then it will consider it as match=none it will not do any check
+        provider: "{{ iosv_var }}"
+    - name: Adding routing protocol RIP
+      ios_config:
+        lines:
+          - router rip
+          - version 2
+          - network 191.16.0.0
+        parents: version 2
+        match: exact
+        provider: "{{ iosv_var }}"
+

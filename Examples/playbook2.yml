@@ -1,0 +1,18 @@
+---
+- hosts: ios
+  gather_facts: no
+  connection: local
+
+  vars:
+    iosv_var:
+      host: "{{ inventory_hostname }}"   
+      username: cisco
+      password: cisco
+      transport: cli
+
+  tasks:
+     - name: Including task  which is adding configurations to device
+       include: iosv_config_task.yml
+
+     - name: getting device information
+       include: iosv_command_task.yml

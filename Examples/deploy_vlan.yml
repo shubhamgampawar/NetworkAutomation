@@ -1,0 +1,35 @@
+---
+
+- name: Deploy VLANs across leaf nodes 
+  hosts: nxos
+  connection: local
+  gather_facts: no
+
+  vars:
+    nxos_device:
+        host: "{{ inventory_hostname }}"
+        username: cisco
+        password: cisco
+        transport: cli
+
+  tasks:
+
+    # Ensure VLAN 50 exists with the name WEB and is in the shutdown state
+    - name: ensure vlan 50 exists with name WEB and is in shutdown state
+      nxos_vlan: vlan_id=50 admin_state=down name=WEB provider={{ nxos_device }}
+
+    - name: Ensure VLAN 70 is NOT on the device
+      nxos_vlan: vlan_id=70 state=absent provider={{ nxos_device }}
+
+    - name: Ensure a group of VLANs are present with the given names
+      nxos_vlan: vlan_id={{ item.vlan_id }} name={{ item.name }} state=present provider={{ nxos_device }}
+      with_items:
+        - vlan_id: 10
+          name: web
+        - vlan_id: 20
+          name: app
+        - { vlan_id: 30, name: db }
+        - vlan_id: 40
+          name: misc
+        - vlan_id: 99
+          name: native_vlan
