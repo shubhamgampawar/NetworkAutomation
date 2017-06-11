@@ -1,5 +1,7 @@
 ###Steps to be followed in Install Ansible and its Dependencies
 
+0. sudo apt-get -qq install git vim
+
 1. Run NetworkAutomation/Installation/install.sh
 
 2. Check Ansible Version using ($ansible --version). This should return proper value with no errors.
