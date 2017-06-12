@@ -1,0 +1,30 @@
+---
+- hosts: iosv2
+  gather_facts: no
+  connection: local
+
+  vars:
+    dhcpclient:
+       host: "{{ inventory_hostname }}"
+       username: cisco
+       password: cisco
+       transport: cli
+
+
+  tasks:
+    - name: configuring DHCP client on Interface eth0/1
+      ios_config:
+        lines:
+          - ip address dhcp
+          - no shutdown
+        parents: interface GigabitEthernet 0/1
+        match: exact
+        provider: "{{ dhcpclient }}"
+    - name: verify DHCP configurations
+      ios_command:
+        provider: "{{ dhcpclient }}"
+        commands:
+          - sh ip inter brief
+      register: result1
+    - debug: var=result1.stdout_lines
+

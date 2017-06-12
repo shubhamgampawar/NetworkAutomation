@@ -1,0 +1,15 @@
+    dhcpserver:
+       host: "{{ inventory_hostname }}"
+       username: cisco
+       password: cisco
+       transport: cli
+       eth1: 1.1.1.1
+       network: 255.255.255.0
+
+    dhcp:
+       network: 1.1.1.0 /24
+       dnsserver1: 1.1.1.10
+       dnsserver2: 1.1.1.11
+       defaultrouter: 1.1.1.1
+       lease: 7
+

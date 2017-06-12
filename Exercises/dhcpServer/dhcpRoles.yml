@@ -1,0 +1,12 @@
+---
+- hosts: iosv1
+  gather_facts: no
+  connection: local
+  roles:
+  - dhcpserver
+
+- hosts: iosv2
+  gather_facts: no
+  connection: local
+  roles:
+  - dhcpclient

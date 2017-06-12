@@ -1,0 +1,29 @@
+    - name: configuring Interface ethernet 0/1
+      ios_config:
+        lines:
+          - ip address {{ dhcpserver.eth1 }} {{ dhcpserver.network }}
+          - no shutdown
+        parents: interface GigabitEthernet 0/1
+        match: exact
+        provider: "{{ dhcpserver }}"
+
+    - name: Create a DHCP IP address pool for the IP addresses
+      ios_config:
+        lines:
+          - network {{ dhcp.network }}
+          - domain-name devopsansible.com
+          - dns-server {{ dhcp.dnsserver1 }} {{ dhcp.dnsserver2 }}
+          - default-router {{ dhcp.defaultrouter }}
+          - lease {{ dhcp.lease }}
+          - exit
+        parents: ip dhcp pool mypool
+        match: exact
+        provider: "{{ dhcpserver }}"
+    - name: verify DHCP configurations
+      ios_command:
+        provider: "{{ dhcpserver }}"
+        commands:
+          - sh run
+      register: result1
+    - debug: var=result1.stdout_lines
+
