@@ -1,0 +1,36 @@
+###### DHCP Server Configuration #########
+To configure DHCP server on router follow following  steps and write respective Playbook:
+
+1. Configure an IP address on the router's Ethernet port, and bring up the interface. 
+   Router(config)# interface ethernet0/1
+   Router(config-if)#ip address 1.1.1.1 255.0.0.0
+   Router(config-if)# no shutdown
+
+2. Create a DHCP IP address pool for the IP addresses you want to use.
+   Router(config)# ip dhcp pool mypool
+
+3. Specify the network and subnet for the addresses you want to use from the pool.
+   Router(dhcp-config)# network 1.1.1.0 /8 
+
+4. Specify the DNS domain name for the clients.
+   Router(dhcp-config)# domain-name devopsansible.com
+
+5. Specify the primary and secondary DNS servers.
+   Router(dhcp-config)#dns-server 1.1.1.10 1.1.1.11
+
+6. Specify the default router (i.e., default gateway).
+   Router(dhcp-config)#default-router 1.1.1.1
+
+7. Specify the lease duration for the addresses you're using from the pool.
+   Router(dhcp-config)#lease 7
+
+########### DHCP CLIENT CONFIGURATION ############
+
+DHCP client configurations
+
+1. Configure an IP address on the router's Ethernet port, and bring up the interface. (On an existing router, you would have already done this.)
+Router(config)# interface ethernet0/1
+Router(config-if)#dhcp
+Router(config-if)# no shutdown
+
+############################################
