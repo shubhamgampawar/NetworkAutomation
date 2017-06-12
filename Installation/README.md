@@ -10,7 +10,7 @@
 
 4. Create file with name "config" under ~/.ssh/ (touch config)
 
-5. Make the StrictHostCheckingKey as NO so that Ansible need not fail to connect for first time.
+5. Make the StrictHostKeyChecking as NO so that Ansible need not fail to connect for first time.
  Open config file using vim and add the line 
 
 6. Verify you are able to SSH into hosts configured in /etc/hosts
