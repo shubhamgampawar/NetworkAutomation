@@ -1,0 +1,8 @@
+---
+- hosts: ios
+  name: Deploy Configurations
+  gather_facts: no
+  tasks:
+    - name: copy device configuration to network devices
+      local_action: >
+           command /usr/bin/sshpass -p {{ansible_ssh_pass}} /usr/bin/scp configs/{{inventory_hostname}}.txt {{ansible_user}}@{{inventory_hostname}}:running-config
