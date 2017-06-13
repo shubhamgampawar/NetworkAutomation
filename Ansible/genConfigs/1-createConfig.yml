@@ -1,0 +1,12 @@
+---
+- hosts: ios
+  connection: local
+  tasks:
+  - template: src=ios/configGen.j2 dest=configs/{{inventory_hostname}}.txt
+  name: create configuration for IOS devices
+
+- hosts: nxos
+  connection: local
+  tasks:
+  - template: src=nxos/configGen.j2 dest=configs/{{inventory_hostname}}.txt
+  name: create configuration for Nexus devices

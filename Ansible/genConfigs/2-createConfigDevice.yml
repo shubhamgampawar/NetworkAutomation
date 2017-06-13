@@ -1,0 +1,7 @@
+---
+- hosts: all
+  connection: local
+  tasks:
+  - template: src={{ansible_device_os}}/configGen.j2 dest=configs/{{inventory_hostname}}.txt
+  name: create configuration for devices
+
