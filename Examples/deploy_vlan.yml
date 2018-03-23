@@ -8,8 +8,8 @@
   vars:
     nxos_device:
         host: "{{ inventory_hostname }}"
-        username: cisco
-        password: cisco
+        username: admin
+        password: admin
         transport: cli
 
   tasks:

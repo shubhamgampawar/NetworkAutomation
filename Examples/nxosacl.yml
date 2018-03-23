@@ -6,8 +6,8 @@
   vars:
     nxos_var:
       host: "{{ inventory_hostname }}"    # if multiple hosts are their in routers then "{{ inventory_hostname }}"
-      username: cisco
-      password: cisco
+      username: admin
+      password: admin
       transport: cli
   tasks:
     - name: testing
