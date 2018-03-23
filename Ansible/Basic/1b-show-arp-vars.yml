@@ -3,8 +3,8 @@
   hosts: router1.local
   gather_facts: no
   vars:
-     ansible_user: cisco
-     ansible_ssh_pass: cisco
+     ansible_user: admin
+     ansible_ssh_pass: admin
   tasks:
   - raw: "show arp vrf mgmt-intf"
     changed_when: False
@@ -13,8 +13,8 @@
   hosts: nxswitch1.local
   gather_facts: no
   vars:
-     ansible_user: cisco
-     ansible_ssh_pass: cisco
+     ansible_user: admin
+     ansible_ssh_pass: admin
   tasks:
   - raw: "show ip arp vrf management"
     changed_when: False
