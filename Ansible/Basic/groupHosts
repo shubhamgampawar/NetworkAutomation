@@ -5,5 +5,5 @@ router1.local
 nxswitch1.local
 
 [all:vars]
-ansible_user=cisco
-ansible_ssh_pass=cisco
+ansible_user=admin
+ansible_ssh_pass=admin
