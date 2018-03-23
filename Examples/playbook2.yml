@@ -8,7 +8,6 @@
       host: "{{ inventory_hostname }}"   
       username: admin
       password: admin
-      transport: cli
 
   tasks:
      - name: Including task  which is adding configurations to device

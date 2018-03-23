@@ -8,7 +8,6 @@
          host: "{{ inventory_hostname }}"    # if multiple hosts are their in routers then "{{ inventory_hostname }}"
          username: admin
          password: admin
-         transport: cli
 
   tasks:
     - name: load new acl into device
