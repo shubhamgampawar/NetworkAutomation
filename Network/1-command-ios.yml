@@ -4,5 +4,5 @@
   - ios_command:
       commands: show arp
       host:     "{{inventory_hostname}}"
-      username: cisco
-      password: cisco
+      username: admin
+      password: admin

@@ -5,7 +5,7 @@ cli:
   username:  "{{ansible_user}}"
   password:  "{{ansible_password}}"
   host:      "{{inventory_hostname}}"
-  transport: cli
+#  transport: cli
 
 nxapi:
   username:  "{{ansible_user}}"

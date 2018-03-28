@@ -1,6 +1,6 @@
 ---
-ansible_user: cisco
-ansible_ssh_pass: cisco
+ansible_user: admin
+ansible_ssh_pass: admin
 
 # Needed for simple configuration demos
 snmp_community: cisco

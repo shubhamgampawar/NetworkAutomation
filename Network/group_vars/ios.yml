@@ -5,5 +5,5 @@ cli:
   username:  "{{ansible_user}}"
   password:  "{{ansible_password}}"
   host:      "{{inventory_hostname}}"
-  transport: cli
+#  transport: cli
 ping_target: [ '172.16.1.254', '172.16.1.20', '172.16.1.30', '172.16.1.40' ]
