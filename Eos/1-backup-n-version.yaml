@@ -1,0 +1,36 @@
+---
+- name: EOS Show Commands
+  hosts: eos
+  gather_facts: false
+#  connection: local
+
+#  vars:
+#    cli:
+#      host: "{{ ansible_host }}"
+#      username: "admin"
+#      password: "admin"
+#      authorize: true
+#      transport: cli
+
+  tasks:
+    - name: Backup current switch config (eos)
+      eos_config:
+        backup: yes
+      register: output
+      when: ansible_network_os == 'eos'
+
+    - name: show output
+      debug:
+        var: output
+
+    - name: eos show commands
+      eos_command:
+        commands:
+          - show version
+#        provider: "{{ cli }}"
+      register: output1
+
+    - name: show output
+      debug:
+        var: output1
+
