@@ -1,0 +1,10 @@
+---
+- name: Execute Show ARP and display output
+  hosts: eos
+  gather_facts: no
+  tasks:
+  - raw: "show running-config"
+    register: result
+    changed_when: False
+  - debug: var=result.stdout_lines
+
