@@ -18,3 +18,13 @@
   tasks:
   - raw: "show ip arp vrf management"
     changed_when: False
+
+- name: Executing Show running-config
+  hosts: eos
+  gather_facts: no
+  vars:
+     ansible_user: admin
+     ansible_ssh_pass: admin
+  tasks:
+  - raw: "show running-config"
+    changed_when: False
