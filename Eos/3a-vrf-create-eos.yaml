@@ -1,0 +1,18 @@
+---
+- name: EOS Creating vrf
+  hosts: eos
+  gather_facts: false
+
+  tasks:
+    - name: Create vrf
+      eos_vrf:
+        name: test
+        rd: 1:200
+        interfaces:
+         - Ethernet2
+        state: present
+    - name: verify vrf test
+      eos_command:
+        commands: show vrf test
+      register: result
+    - debug: var=result.stdout_lines

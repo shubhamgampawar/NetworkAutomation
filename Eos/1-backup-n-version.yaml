@@ -2,15 +2,6 @@
 - name: EOS Show Commands
   hosts: eos
   gather_facts: false
-#  connection: local
-
-#  vars:
-#    cli:
-#      host: "{{ ansible_host }}"
-#      username: "admin"
-#      password: "admin"
-#      authorize: true
-#      transport: cli
 
   tasks:
     - name: Backup current switch config (eos)
@@ -23,11 +14,10 @@
       debug:
         var: output
 
-    - name: eos show commands
+    - name: eos show version
       eos_command:
         commands:
           - show version
-#        provider: "{{ cli }}"
       register: output1
 
     - name: show output

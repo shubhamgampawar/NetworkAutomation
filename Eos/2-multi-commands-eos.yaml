@@ -1,0 +1,8 @@
+---
+- hosts: eos
+  tasks:
+  - eos_command:
+      commands: "{{ item }}"
+    with_items:
+      - sh ip interface brief
+      - show arp

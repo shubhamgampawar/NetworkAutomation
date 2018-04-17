@@ -1,0 +1,7 @@
+---
+- hosts: eos
+  tasks:
+  - eos_command:
+      commands: show arp
+    register: result
+  - debug: var=result.stdout_lines

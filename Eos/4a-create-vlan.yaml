@@ -1,0 +1,17 @@
+---
+- name: EOS creating VLANs
+  hosts: eos
+  gather_facts: false
+
+  tasks:
+    - name: Creating VLANs
+      eos_vlan:
+        vlan_id: "{{item.id}}"
+        state:   "{{item.state | default('present') }}"
+        name:    "{{item.name}}"
+      with_items: "{{vlans}}"
+    - name: show created vlans
+      eos_command:
+        commands: show vlan
+      register: result
+    - debug: var=result.stdout_lines

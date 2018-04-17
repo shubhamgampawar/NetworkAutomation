@@ -1,0 +1,10 @@
+---
+- name: Removing VRF
+  hosts: eos
+  gather_facts: false
+
+  tasks:
+    - name: Deleting vrf
+      eos_vrf:
+        name: test
+        state: absent

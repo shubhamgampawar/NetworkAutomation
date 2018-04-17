@@ -1,0 +1,21 @@
+---
+- name: Creating Multiple VRF's
+  hosts: eos
+  gather_facts: false
+
+  tasks:
+    - name: Create vrf
+      eos_vrf:
+        aggregate:
+          - { name: achme1, rd: "1:204" }
+          - { name: achme2, rd: "1:205" }
+      state: present
+      purge: yes
+    - name: verify vrf test
+      eos_command:
+        commands: "show vrf {{ item }}"
+      with_items:
+        - achme1
+        - achme2
+      register: result
+    - debug: var=result

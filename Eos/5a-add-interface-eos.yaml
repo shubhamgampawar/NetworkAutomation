@@ -1,0 +1,14 @@
+---
+- hosts: eos
+  tasks:
+    - name: configure interface
+      eos_interface:
+         name: ethernet3
+         description: test-interface
+         speed: 100full
+         mtu: 512
+    - name: verify interface
+      eos_command:
+        commands: sh ip interface ethernet3
+      register: result
+    - debug: var=result.stdout_lines
