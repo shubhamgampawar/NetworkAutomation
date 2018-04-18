@@ -1,0 +1,18 @@
+---
+
+- hosts: network
+
+  connection: local
+  gather_facts: 'False'
+
+  vars:
+    cli:
+      username: admin
+      password: admin
+
+  roles:
+    - leafgroups
+    - hostname
+    - interfaces
+    - routing
+    - ntp

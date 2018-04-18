@@ -1,0 +1,36 @@
+---
+
+loopback: 10.255.0.2/32
+
+bgp_fabric:
+  asn: 65000
+  router_id: 10.255.0.2
+  neighbor:
+    - {address: 172.16.9.1, remote_as: 65001}
+    - {address: 172.16.6.1, remote_as: 65002}
+    - {address: 172.16.7.1, remote_as: 65003}
+    - {address: 172.16.8.1, remote_as: 65004}
+  networks:
+    - 10.255.0.2/32
+    - 172.16.9.0/24
+    - 172.16.6.0/24
+    - 172.16.7.0/24
+    - 172.16.8.0/24
+
+interfaces:
+  Ethernet1:
+    alias: downlink-leaf-1
+    port_state: no switchport
+    address: 172.16.9.2/24
+  Ethernet2:
+    alias: downlink-leaf-2
+    port_state: no switchport
+    address: 172.16.6.2/24
+  Ethernet3:
+    alias: downlink-leaf-3
+    port_state: no switchport
+    address: 172.16.7.2/24
+  Ethernet4:
+    alias: downlink-leaf-4
+    port_state: no switchport
+    address: 172.16.8.2/24

@@ -1,0 +1,53 @@
+---
+
+loopback: 10.255.0.6/32
+
+bgp_fabric:
+  asn: 65004
+  router_id: 10.255.0.6
+  neighbor:
+    - {address: 172.16.5.2, remote_as: 65000}
+    - {address: 172.16.8.2, remote_as: 65000}
+  networks:
+    - 10.255.0.6/32
+    - 172.16.5.0/24
+    - 172.16.8.0/24
+    - 10.0.102.0/24
+
+spanning_tree:
+  mode: mstp
+  disabled_vlans: 4094
+
+mlag:
+  domain_id: mlag-11
+  local_interface: Vlan4094
+  peer_address: 169.254.1.2
+  primary_priority: 20
+  peer_link: Ethernet4
+
+vlans:
+  4094:
+    alias: peerlink-vlan
+    pipv4: 169.254.1.1/30
+    trunk_group: mlagpeer
+    options: no autostate
+  102:
+    alias: prod-server-102
+    vipv4: 10.0.102.254
+    pipv4: 10.0.102.253/24
+
+virtual_router_mac_address: 00:1c:73:00:00:99
+
+interfaces:
+  Ethernet1:
+    alias: uplink-spine-1
+    port_state: no switchport
+    address: 172.16.5.1/24
+  Ethernet2:
+    alias: uplink-spine-2
+    port_state: no switchport
+    address: 172.16.8.1/24
+  Ethernet4:
+    alias: peerlink-leaf-3
+    port_state: switchport mode trunk
+    switchport_trunk: group mlagpeer
