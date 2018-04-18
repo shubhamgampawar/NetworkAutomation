@@ -1,6 +1,6 @@
 ---
 - name: EOS Show Commands
-  hosts: eos
+  hosts: switches
   gather_facts: false
 
   tasks:
