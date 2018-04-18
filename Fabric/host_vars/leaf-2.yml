@@ -8,10 +8,12 @@ bgp_fabric:
   neighbor:
     - {address: 172.16.3.2, remote_as: 65000}
     - {address: 172.16.6.2, remote_as: 65000}
+    - {address: 172.16.10.2, remote_as: 65005}
   networks:
     - 10.255.0.4/32
     - 172.16.3.0/24
     - 172.16.6.0/24
+    - 172.16.10.0/24
     - 10.0.101.0/24
 
 spanning_tree:

@@ -8,11 +8,13 @@ bgp_fabric:
   neighbor:
     - {address: 172.16.1.2, remote_as: 65000}
     - {address: 172.16.9.2, remote_as: 65000}
+    - {address: 172.16.2.2, remote_as: 65006}
   networks:
     - 10.255.0.3/32
     - 172.16.1.0/24
     - 172.16.9.0/24
     - 10.0.101.0/24
+    - 172.16.2.0/24
 
 spanning_tree:
   mode: mstp
