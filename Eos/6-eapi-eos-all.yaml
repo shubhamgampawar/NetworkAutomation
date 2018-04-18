@@ -1,0 +1,15 @@
+---
+- name: Enabling eAPI and https port in all EOS switches
+  hosts: eos
+  gather_facts: false
+
+  tasks:
+    - name: Enable eAPI with no HTTP, HTTPS at port 443, local HTTP at port 80, and socket enabled
+      eos_eapi:
+        state: started
+        http: false
+        https_port: 443
+        local_http: yes
+        local_http_port: 80
+        socket: yes
+        timeout: 20
